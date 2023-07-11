@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// model Book{
+//   id String @id @default(uuid())
+//   name String
+//   author String
+//   publisher String
+//   // uid String
+//   // Author Author @relation(fields: [uid], references: [id])
+// }
+
+// model Author{
+//   id String @id @default(uuid())
+//   Book Book[]
+// }
+
+
+enum CredentialTypeEnum{
+  User
+}
+model Credential{
+  id String @id
+  type CredentialTypeEnum
+  algo String
+  digest String
+  encrypted String
+}
+
+
+model Product{
+  id String @id @default(uuid())
+  name String
+  material String
+  type String
+  highlights String
+  ratings String
+  QRcode Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  locations location[]
+  // uid String?
+  // User User? @relation(fields: [uid], references: [id])
+}
+
+enum UserPermissionEnum {
+  member
+  Viewer
+  Admin
+}
+
+model User{
+  id String @id @default(uuid())
+  name String
+  email String @unique 
+  phone String?
+  password String?
+  orgID String?
+  Organization Organization? @relation(references: [id], fields: [orgID])
+  permissions UserPermissionEnum[] 
+
+  // Product Product[]
+}
+
+model Organization{
+  id String @id @default(uuid())
+  name String
+  email String
+  website String
+  address String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+  Users User[]
+
+}
+
+model location{
+  id String @id @default(uuid())
+  timestamp DateTime @default(now())
+  timezone String
+  country String
+  city String
+  region String
+  ipAddress String
+  productId String?
+  product Product? @relation(references: [id], fields: [productId])
+
+}

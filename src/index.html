@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Test</title>
+</head>
+<body>
+  <button onclick="createProduct()">Create Product</button>
+
+  <script>
+    function createProduct() {
+      const payload = {
+        name: "Example Product",
+        material: "Example Material",
+        type: "Example Type",
+        highlights: "Example Highlights",
+        ratings: "Example Ratings"
+      };
+
+      fetch('http://localhost:3333/Product/create/QRcode', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Handle the response data
+      })
+      .catch(error => {
+        console.error(error);
+        // Handle any errors
+      });
+    }
+  </script>
+</body>
+</html>
