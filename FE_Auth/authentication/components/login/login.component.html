@@ -1,0 +1,177 @@
+<div class="container-fluid">
+  <div class="row container-row-height">
+    <div class="col-lg-6 shadow" id="carousel">
+      <div
+        id="carouselExampleDark"
+        class="carousel carousel-dark slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img
+              src="../../../../assets/images/sign_in_page_Slider.svg"
+              class="d-block w-100 mb-5"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Verification through hash with zero charges</h5>
+              <p>
+                Direct revenue channel through payment link Instant verification
+                with real-time results
+              </p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img
+              src="../../../../assets/images/sign_in_page_Slider1.svg"
+              class="d-block w-100 mb-5"
+              alt="..."
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>
+                Documents cannot be tampered with as their hashes are stored on
+                blockchain
+              </h5>
+              <p>Built on Blockchain Technology Fetches you quick results</p>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleDark"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-6 row align-items-center justify-content-center">
+      <div class="col-xs-12 col-md-8 col-md-offset-3 h-75">
+        <img
+          src="../../../../assets/icons/certCheckLogoupdate.svg"
+          class="img-fluid mb-4"
+          alt="certCheckLogo"
+        />
+        <form
+          #loginForm="ngForm"
+          (ngSubmit)="onSubmit(loginForm)"
+          [ngClass]="loginForm.touched ? 'was-validated' : ''"
+        >
+          <p class="fs-2 fw-bolder">Login</p>
+          <p class="fs-6 mb-5">Enter your information below</p>
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="floatingInput"
+              placeholder="name@example.com"
+              ngModel
+              name="email"
+              pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+              required
+            />
+            <label for="floatingInput" class="form-label">Email address</label>
+            <div
+              *ngIf="loginForm.controls['email'].touched"
+              class="invalid-feedback"
+            >
+              {{
+                loginForm.value.email
+                  ? "Please enter a valid email."
+                  : "This field is required."
+              }}
+            </div>
+          </div>
+          <div class="form-floating mb-2">
+            <input type="password" #x class="form-control" id="floatingPassword" placeholder="Password" ngModel name="password"
+              required />
+            <label for="floatingPassword" class="form-label">Password</label>
+            <img (click)='onclick(x)' [src]="showPassword ? '../../../../assets/icons/eye(1).png' : '../../../../assets/icons/eye.png'" class="eye-icon">
+            <div *ngIf="loginForm.controls['password'].touched" -->
+              class="invalid-feedback" > This field is required.
+            </div>
+          </div>
+          <button class="btn btn-link p-0 mb-4"><a routerLink="/forget-password">Forgot Password?</a></button>
+          <div class="d-flex justify-content-between mb-2">
+            <div class="d-flex align-items-center">
+              Do not have an account?<button class="btn btn-link">
+                <a routerLink="/signup">Sign up</a>
+              </button>
+            </div>
+            <button
+              class="btn btn-primary btn-lg"
+              type="submit"
+              (click)="getData()"
+              [disabled]="!loginForm.valid"
+            >
+              {{ isLoading ? "" : "Login" }}
+              <div class="spinner-border" role="status" *ngIf="isLoading">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="buttons" style ="margin-left: 9vw;
+  margin-top: -6vw;"
+>
+    <button class="btn" (click)="viewCertificate()">
+      <p
+        data-text="Click Here"
+        data-title="Search Certificate"
+      ></p>
+    </button>
+  </div>
+</div>
+
+<!-- 
+<div class="login-box">
+  <p>Login</p>
+  <form>
+    <div class="user-box">
+      <input required="" name="" type="text">
+      <label>Email</label>
+    </div>
+    <div class="user-box">
+      <input required="" name="" type="password">
+      <label>Password</label>
+    </div>
+    <a href="#">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </a>
+  </form>
+  <p>Don't have an account? <a href="" class="a2">Sign up!</a></p>
+</div> -->

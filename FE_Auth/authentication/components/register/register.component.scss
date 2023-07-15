@@ -1,0 +1,19 @@
+@import "variables/variables";
+
+.container-fluid {
+    .container-row-height {
+        height: 100vh;
+    }
+}
+
+@media (max-width: 768px) {
+    #carousel {
+        display: none;
+    }
+}
+.img-fluid{
+    margin-left: -2vh;
+}
+
+
+    
